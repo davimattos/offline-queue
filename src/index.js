@@ -1,8 +1,18 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
-const App = () => {
-  return <View />;
-};
+import './config/reactotron';
+import {store, persistor} from './store';
+
+import Repository from './page/index';
+
+const App = () => (
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <Repository />
+    </PersistGate>
+  </Provider>
+);
 
 export default App;
